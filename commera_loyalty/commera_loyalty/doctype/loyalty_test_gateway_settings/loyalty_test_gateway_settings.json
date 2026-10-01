@@ -1,0 +1,37 @@
+{
+ "actions": [],
+ "creation": "2026-10-01 10:00:00.000000",
+ "description": "A fake payment gateway for driving Commera's gateway checkout and refunds without a real provider.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "fail_refunds"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "description": "Make every refund fail, as if the gateway refused it.",
+   "fieldname": "fail_refunds",
+   "fieldtype": "Check",
+   "label": "Fail Refunds"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-01 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Commera Loyalty",
+ "name": "Loyalty Test Gateway Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
