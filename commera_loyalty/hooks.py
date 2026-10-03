@@ -1,5 +1,5 @@
 app_name = "commera_loyalty"
-app_title = "Commera Loyalty"
+app_title = "Loyalty"
 app_publisher = "Rahul Agrawal"
 app_description = "Loyalty points for Commera store orders"
 app_email = "12agrawalrahul@gmail.com"

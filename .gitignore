@@ -2,3 +2,5 @@
 *.pyc
 *.egg-info
 __pycache__
+node_modules
+commera_loyalty/public/commera/
