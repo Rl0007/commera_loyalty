@@ -1,5 +1,5 @@
 <script>
-export const extension = { label: 'Ledger', icon: 'award', requires: 'Loyalty Ledger Entry', order: 1 }
+export const plugin = { label: 'Ledger', icon: 'award', requires: 'Loyalty Ledger Entry', order: 1 }
 </script>
 
 <script setup>
@@ -11,7 +11,7 @@ import {
   ListPagination,
   ListSkeleton,
   shortDate,
-  useExtension,
+  usePlugin,
   useMethodRead,
   usePage,
 } from '@commera/admin'
@@ -19,7 +19,7 @@ import {
 const ALL_CUSTOMERS = 'all'
 const ROW_HEIGHT = 60
 
-const { query, navigate } = useExtension()
+const { query, navigate } = usePlugin()
 
 const customer = computed({
   get: () => query.value.customer || ALL_CUSTOMERS,

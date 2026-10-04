@@ -1,13 +1,13 @@
 <script>
-export const extension = { label: 'Adjust loyalty points', icon: 'coins', requires: 'Loyalty Ledger Entry' }
+export const plugin = { label: 'Adjust loyalty points', icon: 'coins', requires: 'Loyalty Ledger Entry' }
 </script>
 
 <script setup>
 import { computed, ref } from 'vue'
 import { FormControl } from 'frappe-ui'
-import { useAction, useExtension, useMethodAction } from '@commera/admin'
+import { useAction, usePlugin, useMethodAction } from '@commera/admin'
 
-const { record, toast } = useExtension()
+const { record, toast } = usePlugin()
 const action = useAction()
 
 const points = ref('')

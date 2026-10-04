@@ -1,5 +1,5 @@
 <script>
-export const extension = {
+export const plugin = {
   label: 'Loyalty points',
   requires: 'Loyalty Ledger Entry',
   condition: 'commera_loyalty.conditions.has_ledger_entries',
@@ -9,9 +9,9 @@ export const extension = {
 <script setup>
 import { computed } from 'vue'
 import { Skeleton } from 'frappe-ui'
-import { shortDate, useExtension, useMethodRead } from '@commera/admin'
+import { shortDate, usePlugin, useMethodRead } from '@commera/admin'
 
-const { record } = useExtension()
+const { record } = usePlugin()
 
 const pointsRequest = useMethodRead('commera_loyalty.api.get_order_points', {
   params: () => ({ sales_order: record.value.name }),

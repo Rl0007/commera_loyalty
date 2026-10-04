@@ -1,12 +1,12 @@
 <script>
-export const extension = { label: 'Loyalty points', requires: 'Loyalty Ledger Entry' }
+export const plugin = { label: 'Loyalty points', requires: 'Loyalty Ledger Entry' }
 </script>
 
 <script setup>
 import { Button, Skeleton } from 'frappe-ui'
-import { useExtension, useMethodRead } from '@commera/admin'
+import { usePlugin, useMethodRead } from '@commera/admin'
 
-const { record, navigate } = useExtension()
+const { record, navigate } = usePlugin()
 
 const pointsRequest = useMethodRead('commera_loyalty.loyalty.get_points', {
   params: () => ({ customer: record.value.name }),

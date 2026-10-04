@@ -1,16 +1,16 @@
 <script>
-export const extension = { label: 'Top customers', icon: 'star', requires: 'Loyalty Ledger Entry', order: 2 }
+export const plugin = { label: 'Top customers', icon: 'star', requires: 'Loyalty Ledger Entry', order: 2 }
 </script>
 
 <script setup>
 import { computed, ref } from 'vue'
 import { dayjs } from 'frappe-ui'
 import { List, ListCell, ListHeader, ListHeaderCell, ListRow, ListRows } from 'frappe-ui/list'
-import { EmptyState, ListPagination, ListSkeleton, useExtension, useMethodRead, usePage } from '@commera/admin'
+import { EmptyState, ListPagination, ListSkeleton, usePlugin, useMethodRead, usePage } from '@commera/admin'
 
 const ROW_HEIGHT = 60
 
-const { navigate } = useExtension()
+const { navigate } = usePlugin()
 usePage().setActions([{ label: 'View ledger', icon: 'award', onClick: () => navigate('loyalty') }])
 
 const page = ref(1)
