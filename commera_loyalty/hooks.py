@@ -9,6 +9,8 @@ required_apps = ["commera"]
 
 commera_api_version = [1]
 
-commera_order_paid = ["commera_loyalty.loyalty.on_order_paid"]
-commera_order_refunded = ["commera_loyalty.loyalty.on_order_refunded"]
-commera_order_cancelled = ["commera_loyalty.loyalty.on_order_cancelled"]
+commera_events = {
+	"order_paid": ["commera_loyalty.loyalty.on_order_paid"],
+	"order_refunded": ["commera_loyalty.loyalty.on_order_refunded"],
+	"order_cancelled": ["commera_loyalty.loyalty.on_order_cancelled"],
+}
