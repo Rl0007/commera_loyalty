@@ -17,7 +17,7 @@ def on_order_paid(event: CommeraEvent):
 	if is_event_recorded(event.id):
 		return
 
-	order = orders.get_order(event.sales_order)
+	order = orders.get_order(event.reference_name)
 	points = int(order["net_total"] // CURRENCY_UNITS_PER_POINT)
 	if points > 0:
 		save_ledger_entry(event, order["customer"], points, "Order Paid")
@@ -27,8 +27,8 @@ def on_order_refunded(event: CommeraEvent):
 	if is_event_recorded(event.id):
 		return
 
-	order = orders.get_order(event.sales_order)
-	ledger_entries = get_order_ledger_entries(event.sales_order)
+	order = orders.get_order(event.reference_name)
+	ledger_entries = get_order_ledger_entries(event.reference_name)
 	awarded_points = sum(entry.points for entry in ledger_entries if entry.points > 0)
 	reversed_points = -sum(entry.points for entry in ledger_entries if entry.points < 0)
 	refund_amount = flt(event.data.get("amount"))
@@ -46,9 +46,9 @@ def on_order_cancelled(event: CommeraEvent):
 	if is_event_recorded(event.id):
 		return
 
-	points_left = sum(entry.points for entry in get_order_ledger_entries(event.sales_order))
+	points_left = sum(entry.points for entry in get_order_ledger_entries(event.reference_name))
 	if points_left > 0:
-		customer = frappe.db.get_value("Sales Order", event.sales_order, "customer")
+		customer = frappe.db.get_value("Sales Order", event.reference_name, "customer")
 		save_ledger_entry(event, customer, -points_left, "Order Cancelled")
 
 
@@ -78,7 +78,7 @@ def save_ledger_entry(
 		{
 			"doctype": "Loyalty Ledger Entry",
 			"customer": customer,
-			"sales_order": event.sales_order,
+			"sales_order": event.reference_name,
 			"points": points,
 			"reason": reason,
 			"refunded_amount": refunded_amount,
